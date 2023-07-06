@@ -7,7 +7,7 @@ export class StudentController {
         this.studentRepository = new StudentRepository()
     }
 
-    async getStudent(req: Request, res: Response) {
+    getStudent = async (req: Request, res: Response) => {
         try {
             const data = await this.studentRepository.getStudent()
             res.status(200).json(data)
@@ -17,7 +17,7 @@ export class StudentController {
 
     }
 
-    async createStudent(req: Request, res: Response) {
+    createStudent = async (req: Request, res: Response) => {
         try {
             const data = await this.studentRepository.createStudent({ ...req.body })
             res.status(201).json(data)
@@ -25,4 +25,15 @@ export class StudentController {
             res.status(500).json({ error: error })
         }
     }
+
+    findStudent = async (req: Request, res: Response) => {
+        try {
+            const data = await this.studentRepository.findStudent(req.params.id)
+            return res.status(data.status).json(data)
+        } catch (error) {
+            return res.status(500).json({ error: error.message })
+        }
+    }
+
+
 }

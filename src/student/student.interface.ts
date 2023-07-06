@@ -9,3 +9,13 @@ export interface IStudent {
     updated_at: Date;
     deleted_at: Date;
 }
+
+export interface IMessage<T> {
+    data?: T,
+    status: number,
+    message: string
+}
+
+export interface user {
+    findStudent(id: string): Promise<IMessage<IStudent>>;
+}

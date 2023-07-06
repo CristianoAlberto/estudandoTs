@@ -6,5 +6,6 @@ const controller = new StudentController()
 
 router.get('/getStudent', controller.getStudent)
 router.post('/createStudent', controller.createStudent)
+router.get('/findStudent/:id', controller.findStudent)
 
 export { router }
